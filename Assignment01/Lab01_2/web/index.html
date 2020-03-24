@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<html lang="vi">
+    <head>
+        <title>Trang nhap thong tin</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Thông tin sinh viên</h1>
+        <form name="dangkyhandle" action="thongTinDangKyHandle.jsp" method="POST">
+            Họ tên: <input type="text" name="hoTen"><br/>
+            Mã số: <input type="number" name="maSo"><br/>
+            Ngày sinh: <input type="text" name="ngaySinh"><br/>
+            Giới tính: <br/>
+            <input type="radio" id="male" name="gioiTinh" value="Nam" checked="checked" />
+            <label for="male">Nam</label><br>
+            <input type="radio" id="feale" name="gioiTinh" value="Nu    " /> 
+            <label for="female">Nữ</label><br>
+            Khoa: <select name="khoa">
+                    <option>CNPM</option>
+                    <option>CNTT</option>
+                    <option>HTTT</option>
+                    <option>MMT&TT</option>
+                </select>
+            <br/>
+            Câu lạc bộ tham gia: <br/>
+            <input type="checkbox" id="tinhoc" name="tinHoc" value="tinhoc" /> 
+            <label for="tinhoc">Tin học</label><br>
+            <input type="checkbox" id="vannghe" name="vanNghe" value="vannghe" />
+            <label for="vannghe">Văn nghệ</label><br>
+            <input type="checkbox" id="theThao" name="theThao" value="thethao" /> 
+            <label for="theThao">Thể thao</label><br>
+            Sở thích: <textarea name="soThich" rows="4" cols="20">
+                        ...
+                      </textarea>
+            <br/><input type="submit" value="Đăng ký">
+        </form>
+    </body>
+</html>
