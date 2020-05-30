@@ -17,12 +17,13 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author NguyenHongPhuc
  */
-@WebServlet(name = "GotoLoginServlet", urlPatterns = {"/GotoLoginServlet"})
-public class GotoLoginServlet extends HttpServlet {
+@WebServlet(name = "GotoUserServlet", urlPatterns = {"/GotoUserServlet"})
+public class GotoUserServlet extends HttpServlet {
 
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       RequestDispatcher dispatcher = req.getRequestDispatcher("./WEB-INF/jsp/login.jsp");
-        dispatcher.forward(req, resp);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+         RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/user.jsp");
+        dispatcher.forward(request, response);
     }
 }

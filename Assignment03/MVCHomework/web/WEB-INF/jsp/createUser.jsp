@@ -9,9 +9,28 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Create new user</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Create new user</h1> <a href="./">Home</a> <a href="./">Logout</a>
+        
+        <form method="post" action="./">
+            Username <input type="text"/><br/>
+            Pass <input type="password"/><br/>
+            Confirm Pass <input type="password"/><br/>
+            First name <input type="text"/><br/>
+            Last name <input type="text"/><br/>
+            Sex <input type="text"/><br/>
+            Email <input type="text"/><br/>
+            Phone <input type="text"/><br/>
+        </form>
+        
+        <button>
+            <a href="./">Back</a>
+        </button>
+        
+        <button>
+            <a href="./">Save</a>
+        </button>
     </body>
 </html>
