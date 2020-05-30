@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import mvcHomework.Model.User;
 
 /**
@@ -20,30 +22,7 @@ public class UserMapper extends MapperDB{
      public UserMapper() throws Exception {
         super();
     }    
-//    public ArrayList<User> searchBook(String authorName) {
-//        ArrayList<BookDTO> books = new ArrayList<>();    
-//        try {     
-//            Statement stmt = getConnection().createStatement();
-//            String sqlStr = "SELECT * FROM ebookshop.books WHERE author LIKE "
-//                    + "'%" + authorName + "%'"
-//                    + " AND qty > 0 ORDER BY author ASC, title ASC";
-//            ResultSet rs = stmt.executeQuery(sqlStr); // Send the query to the server
-//            int count = 0;
-//            while (rs != null && rs.next()) {
-//                BookDTO book = new BookDTO();
-//                book.setId(rs.getInt("id"));
-//                book.setTitle(rs.getString("title"));
-//                book.setAuthor(rs.getString("author"));
-//                book.setPrice(rs.getFloat("price"));
-//                book.setQty(rs.getInt("qty"));
-//                books.add(book);
-//            }          
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        } 
-//        
-//        return books;
-//    }
+
     public User getUserBy(String username) {
         User u = new User();
         Statement stmt = null;
@@ -68,5 +47,61 @@ public class UserMapper extends MapperDB{
             ex.printStackTrace();
         } 
         return u;
+    }
+    
+    public ArrayList<User> getAllUsers() {
+        ArrayList<User> users = new ArrayList<>();    
+        try {     
+            Statement stmt = getConnection().createStatement();
+            String sqlStr = "SELECT * FROM user";
+            ResultSet rs = stmt.executeQuery(sqlStr); // Send the query to the server
+  
+            while(rs != null && rs.next()) {
+                User u = new User();
+                u.setUsername(rs.getString("username"));
+                u.setPassword(rs.getString("password"));
+                u.setFirstname(rs.getString("firstname"));
+                u.setLastname(rs.getString("lastname"));
+                u.setEmail(rs.getString("email"));
+                u.setAddress(rs.getString("address"));
+                u.setPhone(rs.getString("phone"));
+                u.setRule(rs.getString("rule"));
+                u.setSex(rs.getString("sex"));
+                
+                users.add(u);
+            }       
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } 
+        
+        return users;
+    }
+    
+    public boolean saveUser(User user) {
+        Statement stmt = null;
+
+        try {
+            stmt = getConnection().createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String sqlStr = "insert into user values ('" + user.getUsername() + "','"
+                + user.getPassword() + "','"
+                + user.getFirstname() + "','"
+                + user.getLastname() + "','"
+                + user.getSex() + "','"
+                + user.getAddress() + "','"
+                + user.getEmail() + "','"
+                + user.getPhone() + "','"
+                + user.getRule() + "')";
+
+        int r = -1;
+         try {
+             r = stmt.executeUpdate(sqlStr);
+         } catch (SQLException ex) {
+             Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+        return r>0;
     }
 }

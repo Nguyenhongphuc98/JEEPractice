@@ -4,7 +4,9 @@
     Author     : NguyenHongPhuc
 --%>
 
+<%@page import="mvcHomework.Model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,24 +15,49 @@
     </head>
     <body>
         <h1>The list of users</h1> <a href="./">Home</a> <a href="./">Logout</a>
-        
-        <form method="post" action="./">
-            Username <input type="text"/><br/>
-            Pass <input type="password"/><br/>
-            Confirm Pass <input type="password"/><br/>
-            First name <input type="text"/><br/>
-            Last name <input type="text"/><br/>
-            Sex <input type="text"/><br/>
-            Email <input type="text"/><br/>
-            Phone <input type="text"/><br/>
-        </form>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Sex</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${users}" var="user" >
+                <tr>
+                    <td>${user.getUsername()}</td>
+                    <td>${user.getPassword()}</td>
+                    <td>${user.getFirstname()}</td>
+                    <td>${user.getLastname()}</td>
+                    <td>${user.getSex()}</td>
+                    <td>${user.getAddress()}</td>
+                    <td>${user.getEmail()}</td>
+                    <td>${user.getPhone()}</td>
+                    <td>${user.getRule()}</td>
+            </c:forEach>
+        </tbody>
+    </table>
+            
+  
         
         <button>
-            <a href="./">Back</a>
+            <a href="./GotoAdminServlet">Back</a>
         </button>
         
         <button>
-            <a href="./">Save</a>
+            <a href="./InsertUserServlet">Create</a>
+        </button>
+            
+        <button>
+            <a href="./">Delete</a>
         </button>
     </body>
 </html>

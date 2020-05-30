@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Admin page</h1>
-        <a href="./">Create new user</a><br/>
+        <a href="./InsertUserServlet">Create new user</a><br/>
         <a href="./">Search users</a><br/>
         <a href="./">List users</a><br/>
         <a href="./">Logout</a><br/>

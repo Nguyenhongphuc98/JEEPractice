@@ -6,7 +6,7 @@
 package mvcHomework.servlet;
 
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,13 +17,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author NguyenHongPhuc
  */
-@WebServlet(name = "GotoUserServlet", urlPatterns = {"/GotoUserServlet"})
-public class GotoUserServlet extends HttpServlet {
+@WebServlet(name = "IndexServlet", urlPatterns = {""})
+public class IndexServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/jsp/user.jsp");
-        dispatcher.forward(request, response);
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       resp.sendRedirect("./GotoLoginServlet");
     }
 }

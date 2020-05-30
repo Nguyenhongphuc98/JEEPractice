@@ -23,24 +23,6 @@ public class UserBO {
         this.context = context;
     }
     
-//    public ArrayList<User> searchBook(String authorName) {
-//        ArrayList<User> users = null;
-//        UserMapper mapper = null;
-//        try {
-//            mapper = new UserMapper();
-//            books = mapper.searchBook(authorName);
-//        } catch (Exception ex) {
-//            Logger.getLogger(BookBO.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        finally {
-//            try {
-//                mapper.closeConnection();
-//            } catch (Exception ex) {
-//                Logger.getLogger(BookBO.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-//        return books;
-//    }
     public User getUserBy(String username) {
         User user = null;
         UserMapper mapper = null;
@@ -58,5 +40,44 @@ public class UserBO {
             }
         }        
         return user;
+    }
+    
+    public ArrayList<User> getAllUsers() {
+        ArrayList<User> users = null;
+        UserMapper mapper = null;
+        try {
+            mapper = new UserMapper();
+            users = mapper.getAllUsers();
+        } catch (Exception ex) {
+            Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally {
+            try {
+                mapper.closeConnection();
+            } catch (Exception ex) {
+                Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return users;
+    }
+    
+    public boolean saveUser(User user) {
+        UserMapper mapper = null;
+        boolean r = false;
+        try {
+            mapper = new UserMapper();
+            r = mapper.saveUser(user);
+        } catch (Exception ex) {
+            Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally {
+            try {
+                mapper.closeConnection();
+            } catch (Exception ex) {
+                Logger.getLogger(UserBO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }    
+        
+        return r;
     }
 }
